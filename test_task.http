@@ -1,0 +1,28 @@
+
+### 데이터를 조회할 수 있는 API 예시 1
+POST http://127.0.0.1:8000/create
+Content-Type: application/json
+
+{
+  "name": "John",
+  "content": "something"
+}
+
+
+### 데이터를 조회할 수 있는 API 예시 1
+PUT http://127.0.0.1:8000/update/2
+Content-Type: application/json
+
+{
+  "name": "Same"
+}
+
+
+### 데이터를 조회할 수 있는 API 예시 1
+DELETE http://127.0.0.1:8000/delete/1
+Content-Type: application/json
+
+### 데이터를 조회할 수 있는 API 예시 1
+GET http://127.0.0.1:8000/read/2
+Content-Type: application/json
+
