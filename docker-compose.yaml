@@ -1,10 +1,10 @@
 version: "3"
 services:
-  mysql:
+  db:
     image: mysql:5.7
-    container_name: avikus-db
+    container_name: avikus
     ports:
-      - "13306:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: avikus
     command:
@@ -13,11 +13,25 @@ services:
     volumes:
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
       - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    networks:
+      - mynet
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   app:
     build:
       dockerfile: Dockerfile
     container_name: avikus-api
+    links:
+      - db
+      - db:avikus
     depends_on:
-      - mysql
+      - db
     ports:
       - "8000:8000"
+    networks:
+      - mynet
+networks:
+  mynet:
+volumes:
+  db:
+    driver: local

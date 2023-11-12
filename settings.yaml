@@ -7,9 +7,9 @@ uvicorn:
 db_connection:
   mysql_user: root
   mysql_password: avikus
-  mysql_server: 127.0.0.1
+  mysql_server: db
   mysql_database: avikus
-  mysql_port: 13306
+  mysql_port: 3306
 
 api_config:
   title: avikus Project
